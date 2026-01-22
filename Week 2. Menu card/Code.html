@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Bitcount+Grid+Double:slnt,wght,CRSV,ELSH,ELXP@-6,300,1,8.8,75&family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Grandstander:ital,wght@0,100..900;1,100..900&family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libertinus+Mono&family=Love+Light&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Distressed&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>3 Column Restaurant Menu</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f2a2a;
+  color: #fff;
+}
+
+/* MAIN 3 COLUMN LAYOUT */
+.layout {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+}
+
+/* COMMON COLUMN STYLE */
+.column {
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+/* LEFT COLUMN */
+.left {
+  width: 35%;
+}
+
+/* CENTER COLUMN */
+.center {
+  width: 35%;
+}
+
+/* RIGHT COLUMN */
+.right {
+  width: 30%;
+}
+
+/* HEADINGS */
+h1 {
+  color: #d4af37;
+  margin-top: 0;
+}
+
+.section-title {
+  color: #d4af37;
+  margin: 30px 0 15px;
+  /*border-bottom: 1px solid rgba(212,175,55,0.3);*/
+  padding-bottom: 5px;
+}
+
+/* MENU CARD */
+.menu-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.menu-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.menu-item img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+}
+
+.details {
+  padding: 12px;
+}
+
+.details h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.details p {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.price {
+  color: #d4af37;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+/* SIMPLE LIST FOR CENTER & RIGHT */
+.simple-item {
+  margin-bottom: 15px;
+}
+
+.simple-item span {
+  float: right;
+  color: #d4af37;
+}
+header{
+    color: rgb(255, 195, 67);
+    font-family: Love Light;
+    font-size: 100px;
+}
+</style>
+</head>
+
+<body>
+<header><center>Elan Table</center></header>
+<div class="layout">
+
+  <!-- LEFT COLUMN -->
+  <div class="column left">
+    <h1>Starters</h1>
+
+    <div class="section-title">Starters</div>
+
+    <div class="menu-item">
+      <img src="truffle.jpg">
+      <div class="details">
+        <h3>Truffle-Scented Mushroom Galoutti</h3>
+        <p>Spicy & sweet</p>
+        <div class="price">₹340</div>
+      </div>
+    </div>
+
+    <div class="menu-item reverse">
+      <img src="mushroompatties.jpg">
+      <div class="details">
+        <h3>Mushroom Patties</h3>
+        <p>Veg option</p>
+        <div class="price">₹260</div>
+      </div>
+    </div>
+    <div class = "menu-item">
+        <img src="spaghetti.jpg" >
+        <div class="details">
+            <h3>Fresh Italian Burrata</h3>
+            <div class="price">₹500</div>
+             </div>
+    </div>
+  </div>
+
+  <!-- CENTER COLUMN -->
+  <div class="column center">
+     <h1>Main Course</h1>
+
+    <div class="section-title">Thai</div>
+
+    <div class="menu-item">
+      <img src="Pla nueng.jpg">
+      <div class="details">
+        <h3>Pla Nueng Manao</h3>
+        <p>Spicy & sweet</p>
+        <div class="price">₹3,200</div>
+      </div>
+    </div>
+
+    <div class="menu-item reverse">
+      <img src="phad.jpg">
+      <div class="details">
+        <h3>Phad Thai Goong Sod</h3>
+        <p>Veg option</p>
+        <div class="price">₹2600</div>
+      </div>
+    </div>
+    <div class = "menu-item">
+        <img src="spaghetti.jpg" >
+        <div class="details">
+            <h3>Thai Red Curry with Pineapple & Lychee</h3>
+            <div class="price">₹5000</div>
+             </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="Nallinihari.jpg">
+        <div class="details">
+<h3>Nalli Nihari</h3>
+        </div>
+    </div>
+  </div>
+
+   <div class="menu-item">
+        <img src="" alt="">
+        <div class="details">
+<h3>
+    
+</h3>
+        </div>
+    </div>
+  </div>
+   <div class="menu-item">
+        <img src="" alt="">
+        <div class="details">
+<h3>
+    
+</h3>
+        </div>
+    </div>
+  </div>
+  <!-- RIGHT COLUMN -->
+  <div class="column right">
+    <h1>Main Course</h1>
+
+    <div class="section-title">Thai</div>
+
+    <div class="menu-item">
+      <img src="Pla nueng.jpg">
+      <div class="details">
+        <h3>Pla Nueng Manao</h3>
+        <p>Spicy & sweet</p>
+        <div class="price">₹3,200</div>
+      </div>
+    </div>
+
+    <div class="menu-item reverse">
+      <img src="phad.jpg">
+      <div class="details">
+        <h3>Phad Thai Goong Sod</h3>
+        <p>Veg option</p>
+        <div class="price">₹2600</div>
+      </div>
+    </div>
+    <div class = "menu-item">
+        <img src="spaghetti.jpg" >
+        <div class="details">
+            <h3>Thai Red Curry with Pineapple & Lychee</h3>
+            <div class="price">₹5000</div>
+             </div>
+    </div>
+
+    <div class="menu-item reverse">
+        <img src="Nallinihari.jpg">
+        <div class="details">
+<h3>Nalli Nihari</h3>
+<div class="price">₹5000</div>
+        </div>
+    </div>
+  </div>
+
+   <div class="menu-item">
+        <img src="" alt="">
+        <div class="details">
+<h3>
+    
+</h3>
+        </div>
+    </div>
+  </div>
+   <div class="menu-item">
+        <img src="" alt="">
+        <div class="details">
+<h3>
+    
+</h3>
+        </div>
+    </div>
+  </div>
+   
+</body>
+</html>
