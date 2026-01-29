@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Event Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Bitcount+Grid+Double:slnt,wght,CRSV,ELSH,ELXP@-6,300,1,8.8,75&family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Grandstander:ital,wght@0,100..900;1,100..900&family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libertinus+Mono&family=Love+Light&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Distressed&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fcc792;
+            font-family: Arial, sans-serif;
+            background-image: url(backimage.avif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            
+        }
+
+        .container {
+            width: 700px;
+            margin: 40px auto;
+            background-color: #f5e3c8;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #896e06;
+            font-family: Alumni Sans SC;
+            font-size: 47px;
+        }
+p{
+    font-family: Grenze;
+    font-size: 18px;
+}
+li{
+    font-family: Grenze;
+    font-size: 18px;
+}
+        h3 {
+            margin-top: 20px;
+            color: #450707;
+            font-family: Georgia, 'Times New Roman', Times, se;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #000000;
+            color: rgb(45, 26, 2);
+            background-color: rgb(251, 216, 171);
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .radio-group {
+            margin-top: 8px;
+        }
+
+        .radio-group input {
+            width: auto;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            background-color: #f89c75;
+            color: rgb(6, 5, 5);
+            border: none;
+            
+        }
+
+        button:hover {
+            background-color: #d38d8d;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #f08888;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Ignite 2026 – Learn. Compete. Connect.</h1>
+    <p>
+        <b><span>Event Description:</span></b><br>
+Ignite 2026 is a college-level event designed to encourage participation, creativity, teamwork, and skill development among students. The event will include engaging activities, interactive sessions, and competitive segments that provide students with an opportunity to showcase their talents, learn from peers, and build confidence outside the classroom.
+    </p>
+    <p>
+         <span><b> Objective of the Event: </b></span><br>
+<ul>
+   <li>To promote student engagement beyond academics</li> 
+<li>To enhance communication, leadership, and problem-solving skills</li>
+<li>To encourage collaboration and healthy competition</li>
+<li>To provide a platform for talent recognition
+</li></ul>
+    </p>
+    <p>
+        <span><b>Eligibility:</b></span><br>
+Open to all students of the college. Participants must carry a valid college ID.
+    </p>
+    <p>
+        <span><b>Registration Details:</b></span>
+<ul>
+    <li>Registration is mandatory</li>
+<li>Limited seats available</li>
+<li>Last date to register: [27/02/2007]</li>
+</ul>
+    </p>
+<p>
+    <span><b>Contact Details:</b></span><br>
+Event Coordinator: Nilesh Gupta  <br>
+Contact Number: 9373799606 <br>
+Email: nileshgupta134@gmail.com <br>
+</p>
+    <form>
+
+        <h3>Participant Details</h3>
+
+        <label>Full Name</label>
+        <input type="text" required>
+
+        <label>PRN</label>
+        <input type="text" required>
+
+        <label>Institute Name</label>
+        <input type="text" required>
+
+        <label>Email</label>
+        <input type="email" required>
+
+        <label>Contact Number</label>
+        <input type="tel" required>
+
+        <label>Upload your passport size photo </label>
+        <input type="file" name="fileupload" accept="img"><br>
+
+         <label>Date of Birth : </label>
+        <input type="date" name="bday"><br>
+
+        <h3>Event Details</h3>
+
+        <label>Event Type</label>
+        <div class="radio-group">
+            <input type="radio" name="type" required> Individual
+            <input type="radio" name="type"> Group
+        </div>
+        <label>Choose anyone activity</label>
+        <div class="radio-group">
+            <input type="radio" name="type" required> Dance <br>
+            <input type="radio" name="type"> Singing <br>
+             <input type="radio" name="type"> Drama <br>
+              <input type="radio" name="type"> Any other
+              <textarea name="other" id="">Mention other actitvity...</textarea>
+        </div>
+        <label>Team Name(if group)</label>
+        <input type="text" required>
+        <label>Number of members in Team</label>
+        <input type="text" required>
+        
+
+        <label>
+            I agree to follow all event rules.
+            <input type="checkbox" required>
+        </label>
+
+        <button type="submit">Register</button>
+
+        <p class="note">
+            Certificates will be provided to all participants.
+        </p>
+        
+
+    </form>
+
+</div>
+
+</body>
+</html>
+
