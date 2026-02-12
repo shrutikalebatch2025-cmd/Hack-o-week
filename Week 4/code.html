@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple E-Commerce</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #542d0d;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ba9081;
+            color: rgb(235, 185, 185);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .search-bar input {
+            width: 300px;
+            padding: 6px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: rgb(203, 86, 86);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Category Bar */
+        .categories {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 10px;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .categories a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Product Section */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: rgb(249, 134, 134);
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .price {
+            color: green;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background: #ff9f00;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .btn:hover {
+            background: #fb641b;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #172337;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">MyShop</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products">
+        </div>
+        <div class="nav-links">
+            <a href="#">Login</a>
+            <a href="#">Cart</a>
+        </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="categories">
+        <a href="#">Electronics</a>
+        <a href="#">Mobiles</a>
+        <a href="#">Fashion</a>
+        <a href="#">Home</a>
+        <a href="#">Appliances</a>
+        <a href="#">Books</a>
+    </div>
+
+    <!-- Products -->
+    <div class="container">
+
+        <div class="card">
+            <img src="headphones.jpg">
+            <h3>Wireless Headphones</h3>
+            <p class="price">₹1,999</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Smart watch.jpg">
+            <h3>Smart Watch</h3>
+            <p class="price">₹2,499</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="bluetooth.jpg">
+            <h3>Bluetooth Speaker</h3>
+            <p class="price">₹1,299</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="gaming mouse.jpg">
+            <h3>Gaming Mouse</h3>
+            <p class="price">₹799</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="fitness band.jpg">
+            <h3>Fitness Band</h3>
+            <p class="price">₹1,499</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="led lamp.jpg">
+            <h3>LED Desk Lamp</h3>
+            <p class="price">₹1,099</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="fitness band.jpg">
+            <h3>Fitness Band</h3>
+            <p class="price">₹1,499</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="led lamp.jpg">
+            <h3>LED Desk Lamp</h3>
+            <p class="price">₹1,099</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+    </div>
+
+    <footer>
+        2026 MyShop | Simple E-Commerce Website
+    </footer>
+
+</body>
+</html>
