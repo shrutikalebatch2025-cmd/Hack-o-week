@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow Pro | Custom Groups & Time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Aladin&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Bitcount+Grid+Double:slnt,wght,CRSV,ELSH,ELXP@-6,300,1,8.8,75&family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Grandstander:ital,wght@0,100..900;1,100..900&family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libertinus+Mono&family=Love+Light&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Distressed&family=Rubik+Puddles&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #102a43;
+            --teal: #248277;
+            --coral: #ff7043;
+            --white: #ffffff;
+            --grey-light: #c7f5d4;
+            --text-main: #334e68;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #b0e9da 0%, #47c988 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .app-container {
+            display: flex;
+            width: 95%;
+            max-width: 1100px;
+            height: 85vh;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 240px;
+            background: var(--grey-light);
+            padding: 30px 20px;
+            border-right: 1px solid #dae1e7;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo { font-size: 40px; font-weight: 800; color: var(--teal); margin-bottom: 30px; 
+            font-family: Rubik Puddles;
+        }
+        
+        .group-label { font-size: 0.8rem; font-weight: bold; color: #9fb3c8; margin: 20px 0 10px; text-transform: uppercase;
+           
+        }
+        
+        .nav-item { padding: 10px 15px; border-radius: 10px; cursor: pointer; color: var(--text-main); margin-bottom: 5px; transition: 0.2s; }
+        .nav-item:hover { background: #e1e7ed; }
+        .nav-item.active { background: var(--teal); color: white; }
+
+        .add-group-btn {
+            background: none; border: 1px dashed var(--teal); color: var(--teal);
+            padding: 8px; border-radius: 8px; cursor: pointer; margin-top: 10px; font-weight: bold;
+        }
+
+        /* MAIN CONTENT */
+        .main-content { flex: 1; padding: 40px; overflow-y: auto;
+         font-family: Agbalumo;
+        }
+        
+        .input-card {
+            background: var(--grey-light);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            
+        }
+
+        .input-row 
+        { display: flex; gap: 10px; 
+        }
+        input, select, .btn-add { padding: 12px; border: 1px solid #dae1e7; border-radius: 8px; outline: none; 
+        }
+        input[type="text"] { flex: 2; }
+        .btn-add { background: var(--teal); color: white; border: none; cursor: pointer; font-weight: bold; flex: 1;  font-family: Agbalumo;
+            
+        }
+        .task-item {
+            display: flex; align-items: center; padding: 15px;
+            border-bottom: 1px solid #7ae9c8; transition: 0.2s;
+        }
+        .task-item.completed { opacity: 0.5; }
+        .task-item.completed .task-text { text-decoration: line-through; }
+        .task-text-container { flex: 1; margin-left: 15px; }
+        .task-time { display: block; font-size: 0.8rem; color: #829ab1; }
+        .tag-pill { background: #6bc3bf; color: var(--teal); padding: 4px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: bold;  font-family: Agbalumo;
+        }
+
+        /* CIRCLE PROGRESS */
+        .progress-card {
+            width: 220px; text-align: center; border-left: 1px solid #47e88f;
+            padding: 40px 20px; display: flex; flex-direction: column; align-items: center;
+             font-family: Agbalumo;
+        }
+
+        svg { width: 120px; height: 120px; transform: rotate(-90deg); }
+        circle { fill: none; stroke-width: 10; stroke-linecap: round; }
+        .bg-circle { stroke: #9ddec2; }
+        .prog-circle {
+            stroke: var(--coral);
+            stroke-dasharray: 314;
+            stroke-dashoffset: 314;
+            transition: stroke-dashoffset 0.6s ease;
+        }
+
+        .percent-label { font-size: 1.5rem; font-weight: bold; color: var(--navy); margin-top: -75px; margin-bottom: 50px; }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo"> TaskFlow</div>
+            <div class="group-label">Lists</div>
+            <nav id="groupList">
+                <div class="nav-item active">General</div>
+                <div class="nav-item">Work</div>
+                <div class="nav-item">Personal</div>
+            </nav>
+            <button class="add-group-btn" onclick="addNewGroup()">+ New Group</button>
+        </aside>
+
+        <main class="main-content">
+            <h1>My Tasks</h1>
+            <div class="input-card">
+                <input type="text" id="taskInput" placeholder="Enter task name...">
+                <div class="input-row">
+                    <input type="datetime-local" id="taskTime">
+                    <select id="groupSelect">
+                        <option value="General">General</option>
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                    </select>
+                    <button class="btn-add" onclick="addTask()">Add Task</button>
+                </div>
+            </div>
+
+            <div id="taskList"></div>
+        </main>
+
+        <aside class="progress-card">
+            <h3>Progress</h3>
+            <svg>
+                <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
+                <circle class="prog-circle" id="circleBar" cx="60" cy="60" r="50"></circle>
+            </svg>
+            <div class="percent-label" id="percentText">0%</div>
+            <p id="statText" style="color: #627d98; font-size: 0.85rem;">0 tasks left</p>
+        </aside>
+    </div>
+
+    <script>
+        // 1. ADD NEW GROUPS
+        function addNewGroup() {
+            const groupName = prompt("Enter new group name:");
+            if (groupName) {
+                // Add to Sidebar
+                const nav = document.getElementById('groupList');
+                const newItem = document.createElement('div');
+                newItem.className = 'nav-item';
+                newItem.innerText = groupName;
+                nav.appendChild(newItem);
+
+                // Add to Dropdown
+                const select = document.getElementById('groupSelect');
+                const option = document.createElement('option');
+                option.value = groupName;
+                option.innerText = groupName;
+                select.appendChild(option);
+            }
+        }
+
+        // 2. ADD TASKS
+        function addTask() {
+            const name = document.getElementById('taskInput').value;
+            const time = document.getElementById('taskTime').value;
+            const group = document.getElementById('groupSelect').value;
+
+            if (!name) return alert("Please name your task!");
+
+            const list = document.getElementById('taskList');
+            const item = document.createElement('div');
+            item.className = 'task-item';
+            
+            // Format time nicely
+            const timeDisplay = time ? new Date(time).toLocaleString([], {month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit'}) : "No time set";
+
+            item.innerHTML = `
+                <input type="checkbox" onchange="toggleComplete(this)">
+                <div class="task-text-container">
+                    <span class="task-text">${name}</span>
+                    <span class="task-time">⏰ ${timeDisplay}</span>
+                </div>
+                <span class="tag-pill">${group}</span>
+            `;
+
+            list.prepend(item);
+            document.getElementById('taskInput').value = "";
+            updateProgress();
+        }
+
+        // 3. COMPLETE & PROGRESS LOGIC
+        function toggleComplete(checkbox) {
+            checkbox.parentElement.classList.toggle('completed');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = document.querySelectorAll('.task-item').length;
+            const done = document.querySelectorAll('.task-item input:checked').length;
+            const percent = total === 0 ? 0 : Math.round((done / total) * 100);
+
+            // Update Circle (314 is circumference)
+            const offset = 314 - (percent / 100) * 314;
+            document.getElementById('circleBar').style.strokeDashoffset = offset;
+            
+            // Update Text
+            document.getElementById('percentText').innerText = percent + "%";
+            document.getElementById('statText').innerText = `${done} of ${total} tasks done`;
+        }
+    </script>
+</body>
+</html>
