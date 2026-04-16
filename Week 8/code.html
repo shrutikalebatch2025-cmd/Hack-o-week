@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Aladin&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Bitcount+Grid+Double:slnt,wght,CRSV,ELSH,ELXP@-6,300,1,8.8,75&family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Grandstander:ital,wght@0,100..900;1,100..900&family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lavishly+Yours&family=Libertinus+Mono&family=Love+Light&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Distressed&family=Rubik+Puddles&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Photo Gallery Pro</title>
+<style>
+  :root {
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --primary-blue: #a2d2ff;
+    --dark-btn: #343a40;
+    --danger-red: #ff0000;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #fa95df 0%, #981250 100%);
+    color: #333;
+  }
+
+  h1 { 
+    font-weight: 400;
+    font-size: 100px;
+    margin-bottom: 30px;
+    margin-top: 1px;
+    text-align: center;
+    font-family: Lavishly Yours
+;
+  }
+
+  /* Toolbar Container */
+  .controls-container {
+    background: rgb(138, 0, 117);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    max-width: 1000px;
+  }
+
+  /* Styled Inputs & Buttons */
+  input[type="text"], select {
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 1px solid #c44c5eb2;
+    outline: none;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 12px 24px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    color: #a12c82;
+  }
+
+  button:hover { opacity: 0.8; }
+
+  .btn-create { background-color: var(--primary-blue); color: #7c4076; }
+  .btn-group { background-color: var(--dark-btn); color: #ce1176; }
+
+  /* Custom File Upload */
+  .file-upload-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .file-upload-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #d73fd0;
+    border: 1px solid #333;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+  #uploadInput { display: none; }
+
+  /* Gallery Grid */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery img:hover { transform: scale(1.05); }
+
+  /* Checkbox & Delete Overlay */
+  .select-box {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 20px;
+    height: 20px;
+    z-index: 10;
+    accent-color: #333;
+  }
+
+  .delete-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--danger-red);
+    color: rgb(250, 148, 177);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 10;
+  }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal img { max-width: 85%; max-height: 85%; border-radius: 10px; }
+  .close { position: absolute; top: 30px; right: 40px; font-size: 40px; color: white; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<h1>Framezy</h1>
+
+<div style="text-align: center;">
+  <div class="controls-container">
+    <label class="file-upload-wrapper">
+      <span class="file-upload-btn">☁ Choose File(s)</span>
+      <input type="file" id="uploadInput" accept="image/*" multiple>
+    </label>
+
+    <select id="collectionSelect"></select>
+
+    <input type="text" id="newCollection" placeholder="New collection name">
+
+    <button class="btn-create" onclick="createCollection()">Create Collection</button>
+
+    <button class="btn-group" onclick="moveSelectedImages()">Group Selected Saved Images</button>
+  </div>
+</div>
+
+<div class="gallery" id="gallery"></div>
+
+<div class="modal" id="modal">
+  <span class="close" id="closeBtn">&times;</span>
+  <img id="modalImg" src="">
+</div>
+
+<script>
+  // ... [Keep your existing JavaScript logic here, it will work perfectly with the new classes] ...
+  let data = JSON.parse(localStorage.getItem('galleryData')) || {};
+
+  function saveData() {
+    localStorage.setItem('galleryData', JSON.stringify(data));
+  }
+
+  function loadCollections() {
+    const select = document.getElementById('collectionSelect');
+    select.innerHTML = '';
+    for (let collection in data) {
+      const option = document.createElement('option');
+      option.value = collection;
+      option.textContent = collection;
+      select.appendChild(option);
+    }
+    displayImages();
+  }
+
+  function createCollection() {
+    const name = document.getElementById('newCollection').value.trim();
+    if (!name) return;
+    if (!data[name]) {
+      data[name] = [];
+      saveData();
+      loadCollections();
+    }
+    document.getElementById('newCollection').value = '';
+  }
+
+  const uploadInput = document.getElementById('uploadInput');
+  uploadInput.addEventListener('change', function(event) {
+    const files = event.target.files;
+    const collection = document.getElementById('collectionSelect').value;
+    if (!collection) { alert('Create or select collection first'); return; }
+
+    for (let file of files) {
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          data[collection].push({ src: e.target.result, date: Date.now() });
+          saveData();
+          displayImages();
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  });
+
+  function displayImages() {
+    const gallery = document.getElementById('gallery');
+    const collection = document.getElementById('collectionSelect').value;
+    gallery.innerHTML = '';
+    if (!collection || !data[collection]) return;
+
+    data[collection].forEach((imgData, index) => {
+      const container = document.createElement('div');
+      container.className = 'image-container';
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'select-box';
+      checkbox.dataset.index = index;
+
+      const img = document.createElement('img');
+      img.src = imgData.src;
+      img.onclick = () => {
+        document.getElementById('modal').style.display = 'flex';
+        document.getElementById('modalImg').src = imgData.src;
+      };
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerHTML = '&times;';
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.onclick = (e) => {
+        e.stopPropagation();
+        if (confirm('Delete this image?')) {
+          data[collection].splice(index, 1);
+          saveData();
+          displayImages();
+        }
+      };
+
+      container.appendChild(checkbox);
+      container.appendChild(img);
+      container.appendChild(deleteBtn);
+      gallery.appendChild(container);
+    });
+  }
+
+  function moveSelectedImages() {
+    const currentCollection = document.getElementById('collectionSelect').value;
+    const target = prompt('Enter target collection name:');
+    if (!target || !data[target]) { alert('Invalid collection'); return; }
+
+    const checkboxes = Array.from(document.querySelectorAll('.select-box:checked'));
+    if (checkboxes.length === 0) return;
+
+    let indexes = checkboxes.map(cb => parseInt(cb.dataset.index)).sort((a,b)=>b-a);
+    indexes.forEach(i => {
+      data[target].push(data[currentCollection][i]);
+      data[currentCollection].splice(i, 1);
+    });
+    saveData();
+    displayImages();
+  }
+
+  const modal = document.getElementById('modal');
+  document.getElementById('closeBtn').onclick = () => modal.style.display = 'none';
+  modal.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+
+  if (Object.keys(data).length === 0) {
+    data['My Collection'] = [];
+    saveData();
+  }
+  loadCollections();
+  document.getElementById('collectionSelect').addEventListener('change', displayImages);
+</script>
+</body>
+</html>
